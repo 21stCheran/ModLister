@@ -7,6 +7,9 @@ import java.nio.file.Files;
 import java.util.List;
 
 import com.twentyonec.ModLister.ModLister;
+import com.twentyonec.ModLister.Modes.Blacklist;
+import com.twentyonec.ModLister.Modes.Mode;
+import com.twentyonec.ModLister.Modes.Whitelist;
 
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
@@ -34,8 +37,14 @@ public class Config {
 	public boolean getDebug() {
 		return configuration.getBoolean(DEBUG_PATH);
 	}
-	public String getMode() {
-		return configuration.getString(MODE_PATH);
+	
+	public Mode getMode() {
+	    switch (configuration.getString(MODE_PATH).toLowerCase()) {
+	    case "whitelist":
+	    	return new Whitelist();
+	    default:
+	    	return new Blacklist();
+	    }
 	}
 	
 	private void saveConfig() {
