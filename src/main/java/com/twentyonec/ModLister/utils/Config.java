@@ -18,19 +18,20 @@ import net.md_5.bungee.config.YamlConfiguration;
 public class Config {
 	private ModLister plugin = ModLister.getPlugin();
 	private Configuration configuration;
-	private List<?> modList;
+	private List<String> modList;
 	
 	private final String DEBUG_PATH = "debug";
 	private final String LIST_PATH =  "modifications";
 	private final String MODE_PATH = "mode";
 	
+	@SuppressWarnings("unchecked")
 	public Config() {
 		saveConfig();
 		loadConfig();
-		modList = configuration.getList(LIST_PATH);
+		modList = (List<String>) configuration.getList(LIST_PATH);
 	}
 	
-	public List<?> getModList() {
+	public List<String> getModList() {
 		return modList;
 	}
 	
