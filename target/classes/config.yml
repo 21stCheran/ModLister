@@ -1,5 +1,9 @@
-mode: whitelist
+mode: whitelist #Whitelist or Blacklist certain mods
 debug: false
 
 modifications:
-   - ModName
+   - minecraft
+   - FML
+   - forge
+   - mcp
+   #DO NOT REMOVE THESE FOR WHTIELIST MODE
